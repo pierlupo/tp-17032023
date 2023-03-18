@@ -18,6 +18,7 @@ export default function HomePage({navigation, route}) {
 
   const [CatItems, setCatItems] = useState(CATEGORIES);
   const numColumns = 2
+
   function goToPage() {
     console.log("clic");
     navigation.navigate("AboutMeal") 
@@ -25,35 +26,22 @@ export default function HomePage({navigation, route}) {
     
   return (
     <View style={styles.container}>
-      {/* <Pressable onPress={() => navigation.navigate("AboutMeal")}>
-      <View style={styles.catContainer}>
-        <Text style={styles.catTitle}>Italian</Text>
-          </Pressable>
-
-      {/* <View style={styles.row}>
-        <MenuButton />
-        <MenuButton />
-      </View>
-      <View style={styles.row}>
-        <MenuButton />
-        <MenuButton />
-      </View>
-      <View style={styles.row}>
-        <MenuButton />
-        <MenuButton />
-      </View>
-      <View style={styles.row}>
-        <MenuButton />
-        <MenuButton />
-      </View> */}
       
       <FlatList data={CatItems} numColumns={numColumns} renderItem={(itemData) => {
         
           return ( 
-             <MenuButton id={itemData.item.id} title={itemData.item.title} color={itemData.item.color} onPress={goToPage}/>
+            <Pressable onPress={goToPage}>
+            <View  style={{
+              backgroundColor: itemData.item.color,
+              margin: 15,
+              borderRadius: 5,
+            }}>
+             <MenuButton  id={itemData.item.id} title={itemData.item.title} />
+             </View>
+             </Pressable>
            )
         }} keyExtractor={(item,index) => {
-          return item.id
+          return item.color
         }}></FlatList> 
       
     </View>
@@ -63,11 +51,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  // row: {
-  //   Width: '100%',
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-around',
-    
-  // },
  
 });
