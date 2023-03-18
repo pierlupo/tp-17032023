@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,75 +9,66 @@ import {
   View,
   Pressable,
   FlatList,
-} from 'react-native'; 
+} from 'react-native';
 
 import { CATEGORIES } from '../data/data.js';
+import Category from '../models/category.js';
 import MenuButton from './MenuButton.js';
-
 
 export default function HomePage({navigation, route}) {
 
-  const [CATEGORIES,setCATEGORIES] = useState([])
-
+  const [CatItems, setCatItems] = useState(CATEGORIES);
+  const numColumns = 2
   function goToPage() {
-    onPress=navigation.navigate("AboutMeal")
-  }
-
-  return (
+    console.log("clic");
+    navigation.navigate("AboutMeal") 
+    }
     
-    <ScrollView  style={styles.container}>
+  return (
+    <View style={styles.container}>
       {/* <Pressable onPress={() => navigation.navigate("AboutMeal")}>
       <View style={styles.catContainer}>
         <Text style={styles.catTitle}>Italian</Text>
-        
-      </View>
-      <View style={styles.catContainer}>
-        <Text style={styles.catTitle}>Italian</Text>
-        
-      </View>
-      <View style={styles.catContainer}>
-        <Text style={styles.catTitle}>Italian</Text>
-        
-      </View>
-      <View style={styles.catContainer}>
-        <Text style={styles.catTitle}>Italian</Text>
-        
-      </View>
-      <View style={styles.catContainer}>
-        <Text style={styles.catTitle}>Italian</Text>
-        
-      </View>
-      <View style={styles.catContainer}>
-        <Text style={styles.catTitle}>Italian</Text>
-        
-      </View>
-      </Pressable> */}
-      <MenuButton />
-    </ScrollView>
+          </Pressable>
 
-  )
+      {/* <View style={styles.row}>
+        <MenuButton />
+        <MenuButton />
+      </View>
+      <View style={styles.row}>
+        <MenuButton />
+        <MenuButton />
+      </View>
+      <View style={styles.row}>
+        <MenuButton />
+        <MenuButton />
+      </View>
+      <View style={styles.row}>
+        <MenuButton />
+        <MenuButton />
+      </View> */}
+      
+      <FlatList data={CatItems} numColumns={numColumns} renderItem={(itemData) => {
+        
+          return ( 
+             <MenuButton id={itemData.item.id} title={itemData.item.title} color={itemData.color} onPress={goToPage}/>
+           )
+        }} keyExtractor={(item) => {
+          return item.id
+        }}></FlatList> 
+        {/* <MenuButton  onPress={goToPage}/> */}
+    </View>
+  );
 }
-
 const styles = StyleSheet.create({
-//   container : {
-//     flex : 1,
-     
-// },
-// catContainer: {
-//   height: 200,
-//   width: 200,
-//   backgroundColor: "pink",
-//   borderRadius: 5,
-//   padding:20,
-//   margin:10
-// },
-// catTitle: {
-//   padding:50,
-//   fontSize: 20,
-//   textAlign: "center",
-//   justifyContent: "center",
-//   alignItems: "center"
-// }
-
-
-})
+  container: {
+    flex: 1,
+  },
+  row: {
+    Width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    
+  },
+ 
+});

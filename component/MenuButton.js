@@ -1,12 +1,17 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
 
-export default function MenuButton() {
+export default function MenuButton({onPress, title, size, backgroundColor}) {
+
+    // function goToPage() {
+    //     console.log("clic");
+    //     navigation.navigate("AboutMeal") 
+    //     }
   return (
  
-    <Pressable >
-    <View style={styles.catContainer}>
-      <Text style={styles.catTitle}>Italian</Text>
+    <Pressable onPress={onPress}>
+    <View style={[styles.catContainer,  backgroundColor && {backgroundColor}]}>
+      <Text style={styles.catTitle}>{title}</Text>
       
     </View>
     </Pressable>
@@ -16,11 +21,11 @@ export default function MenuButton() {
 const styles = StyleSheet.create({
 
 catContainer: {
-height: 200,
-width: 200,
+height: 175,
+width: 175,
 backgroundColor: "pink",
 borderRadius: 5,
-padding:20,
+padding:10,
 margin:10
 },
 catTitle: {
