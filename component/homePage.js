@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 
 import { CATEGORIES } from '../data/data.js';
-import Category from '../models/category.js';
 import MenuButton from './MenuButton.js';
 
 export default function HomePage({navigation, route}) {
@@ -51,12 +50,12 @@ export default function HomePage({navigation, route}) {
       <FlatList data={CatItems} numColumns={numColumns} renderItem={(itemData) => {
         
           return ( 
-             <MenuButton id={itemData.item.id} title={itemData.item.title} color={itemData.color} onPress={goToPage}/>
+             <MenuButton id={itemData.item.id} title={itemData.item.title} color={itemData.item.color} onPress={goToPage}/>
            )
-        }} keyExtractor={(item) => {
+        }} keyExtractor={(item,index) => {
           return item.id
         }}></FlatList> 
-        {/* <MenuButton  onPress={goToPage}/> */}
+      
     </View>
   );
 }
@@ -64,11 +63,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  row: {
-    Width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+  // row: {
+  //   Width: '100%',
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-around',
     
-  },
+  // },
  
 });
