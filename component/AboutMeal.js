@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {MEALS} from '../data/data.js';
 import {
   SafeAreaView,
   ScrollView,
@@ -7,20 +8,29 @@ import {
   Text,
   useColorScheme,
   View,
-  Pressable
+  Pressable,
+  FlatList,
 } from 'react-native';
 
+export default function AboutMeal(navigation) {
+  const [MealItem, setMealItem] = useState(MEALS);
 
-
-
-
-export default function AboutMeal() {
   return (
-    
     <View>
-      <Text>AboutMeal</Text>
+      <FlatList
+        data={MealItem}
+        renderItem={itemData => {
+          return (
+            <Pressable>
+              <Text id={itemData.item.id} title={itemData.item.title} />
+            </Pressable>
+          );
+        }}
+        keyExtractor={(item, index) => {
+          return item.id;
+        }}></FlatList>
     </View>
-  )
+  );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
