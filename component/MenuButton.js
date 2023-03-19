@@ -15,6 +15,7 @@ export default function MenuButton({
     navigation.navigate('MealsCat');
   }
   return (
+    
     <Pressable onPress={goToPage}>
       <View style={styles.catContainer}>
         <Text style={styles.catTitle}>{title}</Text>
