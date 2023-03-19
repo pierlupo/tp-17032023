@@ -1,18 +1,20 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
 import Category from '../models/category'
+import { useNavigation } from '@react-navigation/native'
 
-export default function MenuButton({onPress, title, size, backgroundColor, color}) {
+export default function MenuButton({onPress, title, size, backgroundColor, color }) {
 
-    function goToPage() {
-        console.log("clic");
-        navigation.navigate("AboutMeal") 
-        }
+  const navigation = useNavigation()
+  function goToPage() {
+    console.log("clic");
+    navigation.navigate("AboutMeal") 
+    }
   return (
  
-    <Pressable onPress={goToPage}>
+    <Pressable  onPress={goToPage}>
     
-    <View style={styles.catContainer} >
+    <View style={styles.catContainer}>
       <Text style={styles.catTitle}>{title}</Text>
     </View>
     
@@ -34,5 +36,4 @@ textAlign: "center",
 marginTop:60,
 }
 
-
-})
+});

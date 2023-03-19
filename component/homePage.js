@@ -14,15 +14,10 @@ import {
 import { CATEGORIES } from '../data/data.js';
 import MenuButton from './MenuButton.js';
 
-export default function HomePage({navigation, route}) {
+export default function HomePage() {
 
   const [CatItems, setCatItems] = useState(CATEGORIES);
   const numColumns = 2
-
-  function goToPage() {
-    console.log("clic");
-    navigation.navigate("AboutMeal") 
-    }
     
   return (
     <View style={styles.container}>
@@ -30,15 +25,16 @@ export default function HomePage({navigation, route}) {
       <FlatList data={CatItems} numColumns={numColumns} renderItem={(itemData) => {
         
           return ( 
-            <Pressable onPress={goToPage}>
+            
             <View  style={{
               backgroundColor: itemData.item.color,
               margin: 15,
               borderRadius: 5,
             }}>
+              <Pressable>
              <MenuButton  id={itemData.item.id} title={itemData.item.title} />
-             </View>
              </Pressable>
+             </View>
            )
         }} keyExtractor={(item,index) => {
           return item.color
