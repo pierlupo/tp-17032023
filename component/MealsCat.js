@@ -1,15 +1,33 @@
 import {StyleSheet, Text, View, FlatList, Image} from 'react-native';
-import React, {useState} from 'react';
-import {MEALS} from '../data/data.js';
+import React, {useLayoutEffect, useState} from 'react';
+import {CATEGORIES, MEALS} from '../data/data.js';
 import Displaycat from './Displaycat.js';
 
-export default function MealsCat(navigation, title) {
-  const [MealsCat, setMealsCat] = useState(MEALS);
+export default function MealsCat({navigation, route, title}) {
+  // const [MealsCat, setMealsCat] = useState(MEALS);
+
+  // const catId = route.params.categoryId;
+  const catId = "c1"
+
+  const meals = MEALS.filter((item)=>{
+    return item.categoryIds.includes(catId)
+  })
+
+  useLayoutEffect(() => {
+    const categoryTitle = CATEGORIES.find(
+        (category) => category.id == catId
+    ).title;
+
+    navigation.setOptions({
+        title : categoryTitle
+    })
+},[catId, navigation])
+
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={MealsCat}
+        data={meals}
         renderItem={itemData => {
           return (
             <View style={styles.mealContainer}>

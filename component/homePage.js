@@ -14,14 +14,14 @@ import {
 import {CATEGORIES} from '../data/data.js';
 import MenuButton from './MenuButton.js';
 
-export default function HomePage() {
-  const [CatItems, setCatItems] = useState(CATEGORIES);
+export default function HomePage({navigation}) {
+  // const [CatItems, setCatItems] = useState(CATEGORIES);
   const numColumns = 2;
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={CatItems}
+        data={CATEGORIES}
         numColumns={numColumns}
         renderItem={itemData => {
           return (
@@ -32,7 +32,7 @@ export default function HomePage() {
                 borderRadius: 5,
               }}>
               <Pressable> 
-                <MenuButton id={itemData.item.id} title={itemData.item.title} color={itemData.item.color} onPress={()=>console.log(itemData.item.id)} />
+                <MenuButton title={itemData.item.title} color={itemData.item.color} onPress={navigation.navigate('MealsCat', {categoryId : itemData.item.id})} />
               </Pressable>
             </View>
           );
