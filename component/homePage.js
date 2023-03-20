@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, {useState} from 'react';
 import {
   SafeAreaView,
@@ -15,9 +16,10 @@ import {CATEGORIES} from '../data/data.js';
 import MenuButton from './MenuButton.js';
 
 export default function HomePage({navigation}) {
-  // const [CatItems, setCatItems] = useState(CATEGORIES);
+// const [CatItems, setCatItems] = useState(CATEGORIES);
   const numColumns = 2;
-
+// const navigation = useNavigation();
+ 
   return (
     <View style={styles.container}>
       <FlatList
@@ -31,15 +33,15 @@ export default function HomePage({navigation}) {
                 margin: 15,
                 borderRadius: 5,
               }}>
-              <Pressable> 
-                <MenuButton title={itemData.item.title} color={itemData.item.color} onPress={navigation.navigate('MealsCat', {categoryId : itemData.item.id})} />
-              </Pressable>
+              
+                <MenuButton title={itemData.item.title} color={itemData.item.color} onPress={()=> {navigation.navigate('MealsCat', {categoryId : itemData.item.id})}} />
+              
             </View>
           );
         }}
         keyExtractor={(item, index) => {
           return item.id;
-        }}></FlatList>
+        }} />
     </View>
   );
 }

@@ -7,13 +7,13 @@ export default function MenuButton({
   title,
   color,
 }) {
-  const navigation = useNavigation();
-  function goToPage() {
-    console.log('clic');
-    navigation.navigate('MealsCat');
-  }
+  // const navigation = useNavigation();
+  // function goToPage() {
+  //   console.log('clic');
+  //   navigation.navigate('MealsCat');
+  // }
   return (
-    <Pressable onPress={goToPage}>
+    <Pressable onPress={onPress} style={({pressed}) =>  [ styles.button, pressed ? styles.buttonPressed : null] }>
       <View style={[styles.catContainer, {backgroundColor: color}]}>
         <Text style={styles.catTitle}>{title}</Text>
       </View>
@@ -34,4 +34,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 60,
   },
+  button : {
+    flex : 1,
+},
+buttonPressed : {
+    opacity : 0.5,
+},
 });

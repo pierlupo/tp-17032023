@@ -6,8 +6,8 @@ import Displaycat from './Displaycat.js';
 export default function MealsCat({navigation, route, title}) {
   // const [MealsCat, setMealsCat] = useState(MEALS);
 
-  // const catId = route.params.categoryId;
-  const catId = "c1"
+  const catId = route.params.categoryId;
+  // const catId = "c1"
 
   const meals = MEALS.filter((item)=>{
     return item.categoryIds.includes(catId)
