@@ -16,12 +16,14 @@ export default function Displaycat(
     navigation.navigate('Home');
   }
   return (
-
     <Pressable onPress={goToPage}>
       <View style={styles.mealContainer}>
-        <Image style={styles.img} source={{uri:{imageUrl}}}>{imageUrl}</Image>
+        {/* <Image syle={styles.img} source={{uri:{imageUrl}}}/> */}
+        {/* <Image>{imageUrl}</Image> */}
         <Text style={styles.mealTitle}>{title}</Text>
-        <Text style={styles.textStyle}>{duration}{complexity}{affordability}</Text>
+        {/* <Text style={styles.textStyle}>{duration}</Text>
+        <Text style={styles.textStyle}>{complexity}</Text>
+        <Text style={styles.textStyle}>{affordability}</Text> */}
       </View>
     </Pressable>
   );

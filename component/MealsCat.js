@@ -17,19 +17,25 @@ export default function MealsCat(navigation, title) {
                 style={styles.img}
                 source={{uri: itemData.item.imageUrl}}
               />
-              {/* <Displaycat id={itemData.item.id} title={itemData.item.title} duration={itemData.item.duration} complexity={itemData.item.complexity} affordability={itemData.item.affordability}/> */}
+              {/* <Displaycat
+                id={itemData.item.id}
+                title={itemData.item.title} */}
+                {/* // duration={itemData.item.duration}
+                // complexity={itemData.item.complexity}
+                // affordability={itemData.item.affordability} */}
+              {/* /> */}
 
               <Text
-                style={styles.textStyle}
-                id={itemData.item.id}
-                title={itemData.item.title}
-              />
+                style={styles.mealTitle}
+                // id={itemData.item.id}
+                // title={itemData.item.title}
+              >{itemData.item.title}</Text>
               <Text
                 style={styles.textStyle}
-                duration={itemData.item.duration}
-                complexity={itemData.item.complexity}
-                affordability={itemData.item.affordability}
-              />
+                // duration={itemData.item.duration}
+                // complexity={itemData.item.complexity}
+                // affordability={itemData.item.affordability}
+              >{itemData.item.duration}m {itemData.item.complexity} {itemData.item.affordability}</Text>
             </View>
           );
         }}
@@ -46,10 +52,10 @@ const styles = StyleSheet.create({
   },
   img: {
     width: '100%',
-    height: '80%',
+    height: 300,
+    borderRadius: 5,
   },
   mealContainer: {
-    flex: 1,
     marginLeft: 'auto',
     marginRight: 'auto',
     width: '90%',
@@ -59,12 +65,18 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   textStyle: {
-    height: 150,
-    fontSize: 50,
+    // height: 150,
+    fontSize: 20,
     color: 'black',
+    textAlign: 'center',
+    padding: 5,
   },
   mealTitle: {
-    fontSize: 50,
-    color: 'grey',
+    padding: 5,
+    // height: 150,
+    fontSize: 20,
+    color: '#808080',
+    textAlign: 'center',
+    
   },
 });
