@@ -31,8 +31,8 @@ export default function HomePage() {
                 margin: 15,
                 borderRadius: 5,
               }}>
-              <Pressable>
-                <MenuButton id={itemData.item.id} title={itemData.item.title} />
+              <Pressable> 
+                <MenuButton id={itemData.item.id} title={itemData.item.title} color={itemData.item.color} onPress={()=>console.log(itemData.item.id)} />
               </Pressable>
             </View>
           );

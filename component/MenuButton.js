@@ -5,8 +5,6 @@ import {useNavigation} from '@react-navigation/native';
 export default function MenuButton({
   onPress,
   title,
-  size,
-  backgroundColor,
   color,
 }) {
   const navigation = useNavigation();
@@ -16,7 +14,7 @@ export default function MenuButton({
   }
   return (
     <Pressable onPress={goToPage}>
-      <View style={styles.catContainer}>
+      <View style={[styles.catContainer, {backgroundColor: color}]}>
         <Text style={styles.catTitle}>{title}</Text>
       </View>
     </Pressable>
@@ -27,6 +25,7 @@ const styles = StyleSheet.create({
   catContainer: {
     height: 175,
     width: 175,
+    borderRadius: 5,
   },
   catTitle: {
     padding: 10,
